@@ -34,10 +34,14 @@ void quickSort(int angka[], int low, int high) {
         quickSort(angka, low, pi - 1);  // bagian kiri pivot
         quickSort(angka, pi + 1, high); // bagian kanan pivot
     }
-    printf("hasil sorting quick sort (asc): \n");
+}
+
+void cetakQS(int angka[], int n){
+    printf("\nhasil sorting quick sort (asc): \n");
     for(int i = 0; i < n; i++){
         printf("%d ", angka[i]);
     }
+    printf("\n");
 }
 
 int hantuIni(int x){
@@ -79,6 +83,7 @@ void input() {
             printf("angka ke-%d: ", i+1); scanf("%d", &angka[i]);
         }
         quickSort(angka, 0, n-1);
+        cetakQS(angka, n);
         bubbleSort(angka, n, hantu);
         }
     else {
