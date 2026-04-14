@@ -58,6 +58,9 @@ int m, n; // m = jumlah angka hantu, n = jumlah total angka
 int hantu[serem]; //array untuk menyimpan angka hantu
 int angka[100]; //array untuk menyimpan seluruh data angka
 
+//fungsi prototype untuk hantuIni (dideklarasikan sebelum digunakan)
+int hantuIni(int x);
+
 //fungsi untuk menukar dua elemen dengan menampung
 void tuker(int *a, int *b){
     int temp = *a;
@@ -96,9 +99,14 @@ void quickSort(int angka[], int low, int high) {
 
 //mencetak hasil quicksort
 void cetakQS(int angka[], int n){
-    printf("\nhasil sorting quick sort (asc): \n");
-    for(int i = 0; i < n; i++){
-        printf("%d ", angka[i]);
+    printf("\nhasil sorting quick sort (asc+hantu): \n");
+    for(int i = 0; i < n; i++){ //angka yang termasuk angka hantu tidak ditampilkan
+        if(hantuIni(angka[i])){
+            printf("  ");
+        }
+        else{ // angka normal
+            printf("%d ", angka[i]);
+        }
     }
     printf("\n");
 }
@@ -141,8 +149,7 @@ void bubbleSort(int angka[], int size){
 // loop validasi input agar program terus meminta input ulang sampai nilai m dan n memenuhi batas array yang tersedia
 int main() {
     do{
-        printf("masukkan total angka hantu yang ada (m): "); scanf("%d", &m);
-        printf("masukkan total angka keseluruhan (n): "); scanf("%d", &n);
+        printf("masukkan total angka hantu dan total angka yang ada (m n): "); scanf("%d %d", &m, &n);
         printf("\n");
 
         if (m < 10 && m > 0 && n <= 100 && n > 0 && m < n){ // validasi input untuk mencegah segmentation fault
